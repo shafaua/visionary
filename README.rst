@@ -7,7 +7,7 @@ Python client library for Google Cloud Vision API
 https://cloud.google.com/vision
 
 Install
-=======
+-------
 
 Library can be installed with pip: `pip install visionary`
 
@@ -16,6 +16,8 @@ Usage
 -----
 
 Usage examples:
+
+.. code-block:: python
 
     from visionary import GoogleCloudVision, LabelDetection, LogoDetection
     
@@ -29,22 +31,30 @@ Usage examples:
     response = client.annotate("dummy.jpg", LabelDetection(3))
 
 Detection params can be set explicitly:
-    
+
+.. code-block:: python
+
     # 5 results max for logo detection and only one result for label detection
     response = client.annotate("dummy.jpg", LogoDetection(5), LabelDetection(1))
 
 First param can be file object:
     
+.. code-block:: python
+
     uploaded_file = open("dummy.jpg")
     ...
     # somewhere later
     response = client.annotate(uploaded_file)
     
 Or URL:    
-    
+
+.. code-block:: python
+
     response = client.annotate("http://google.com/dummy.jpg")
     
 Client supports multiple images in single `annotate` call
+
+.. code-block:: python
 
     response = client.annotate(
         ("dummy.jpg"),
@@ -54,10 +64,11 @@ Client supports multiple images in single `annotate` call
     
 Dealing with response:
 
+.. code-block:: python
+
     if response.ok:
         for resp in response.responses:
             for i in resp.logo_annotations:
                 print(i.description)
     else:
         print(response.error['code'], response.error['message'], response.error['status'])
-

@@ -4,6 +4,7 @@ import base64
 import requests
 from .exceptions import GoogleCloudVisionException
 from .response import GoogleCloudVisionResponse
+from .compat import basestring, file_
 
 
 class GoogleCloudVision(object):
@@ -35,9 +36,9 @@ class GoogleCloudVision(object):
         :param image: One of file object, path, or URL
         :return: Base64 of image
         """
-        if isinstance(image, file):
+        if isinstance(image, file_):
             return base64.b64encode(image.read())
-        elif isinstance(image, str):
+        elif isinstance(image, basestring):
             if image.startswith("http"):
                 # it's URL
                 return base64.b64encode(requests.get(image).content)

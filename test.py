@@ -1,12 +1,15 @@
+import os
 import unittest
 from visionary import GoogleCloudVision, LabelDetection, LogoDetection
+from visionary.compat import bytes, str
 from visionary.response import GoogleCloudVisionResponse, Response, BaseLogoAnnotation, \
     LabelAnnotation
 
 API_KEY = '<dummy>'
 IMAGE_URL = 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Transparent.gif'
-IMAGE_PATH = 'tests/1px.gif'
+IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'tests', '1px.gif'))
 
+TEST_JSON_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), 'tests', 'data.json'))
 ONE_PIXEL_BASE64 = "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
 
@@ -53,11 +56,11 @@ class GcvTestCase(unittest.TestCase):
             self.assertEqual(req, expected)
 
     def test_logo_annotation(self):
-        with open('tests/data.json') as f:
+        with open(TEST_JSON_FILE) as f:
             content = f.read()
             response = GoogleCloudVisionResponse(content)
 
-            self.assert_(response.ok)
+            self.assertTrue(response.ok)
             self.assertEqual(len(response.responses), 1)
             resp = response.responses[0]
             self.assertIsInstance(resp, Response)
@@ -69,7 +72,7 @@ class GcvTestCase(unittest.TestCase):
             self.assertIsInstance(ann.boundingPoly, dict)
 
     def test_label_annotation(self):
-        with open('tests/data.json') as f:
+        with open(TEST_JSON_FILE) as f:
             content = f.read()
             response = GoogleCloudVisionResponse(content)
             resp = response.responses[0]

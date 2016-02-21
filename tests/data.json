@@ -1,0 +1,75 @@
+{
+  "responses": [
+    {
+      "logoAnnotations": [
+        {
+          "mid": "/m/0cgwr3",
+          "description": "Visa",
+          "score": 0.26720411,
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 73,
+                "y": 41
+              },
+              {
+                "x": 145,
+                "y": 41
+              },
+              {
+                "x": 145,
+                "y": 380
+              },
+              {
+                "x": 73,
+                "y": 380
+              }
+            ]
+          }
+        },
+        {
+          "mid": "/m/021b7r",
+          "description": "MasterCard",
+          "score": 0.25134224,
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 390,
+                "y": 253
+              },
+              {
+                "x": 428,
+                "y": 253
+              },
+              {
+                "x": 428,
+                "y": 278
+              },
+              {
+                "x": 390,
+                "y": 278
+              }
+            ]
+          }
+        }
+      ],
+      "labelAnnotations": [
+        {
+          "mid": "/m/011s0",
+          "description": "advertising",
+          "score": 0.64407796
+        },
+        {
+          "mid": "/m/0218rg",
+          "description": "flyer",
+          "score": 0.55146551
+        },
+        {
+          "mid": "/m/086nh",
+          "description": "web page",
+          "score": 0.53293389
+        }
+      ]
+    }
+  ]
+}
